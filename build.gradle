@@ -1,0 +1,77 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group='com.codeborne'
+archivesBaseName = 'xls-test'
+version='1.0-SNAPSHOT'
+
+compileJava.options.debugOptions.debugLevel = "source,lines,vars"
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+defaultTasks 'test', 'install'
+
+dependencies {
+  compile group: 'net.sf.jxls', name: 'jxls-core', version: '1.0.6', transitive: true
+  compile group: 'net.sf.jxls', name: 'jxls-reader', version: '1.0.6', transitive: true
+  compile group: 'org.apache.commons', name: 'commons-jexl', version: '2.0.1', transitive: true
+  compile group: 'org.apache.poi', name: 'poi', version: '3.11', transitive: true
+  compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.11', transitive: true
+  compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.11', transitive: true
+
+  compile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3', transitive: false
+  testCompile group: 'junit', name: 'junit', version: '4.12', transitive: false
+}
+
+repositories{
+  mavenCentral()
+}
+
+task libs(type: Sync) {
+  from configurations.compile
+  from configurations.testCompile
+  into "$buildDir/lib"
+}
+
+compileJava.dependsOn libs
+
+test {
+  include 'com/codeborne/xlstest/**/*'
+  systemProperties['file.encoding'] = 'UTF-8'
+  testLogging.showStandardStreams = true
+}
+
+jar {
+  manifest {
+    attributes(
+      "Implementation-Title": project.group + '.' + project.name,
+      "Implementation-Version": version,
+      "Implementation-Vendor": "Codeborne")
+  }
+}
+
+task sourcesJar(type: Jar, dependsOn:classes) {
+  classifier = 'sources'
+  from sourceSets.main.allSource
+}
+
+javadoc {
+  failOnError=false
+}
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives jar
+  archives sourcesJar
+  archives javadocJar
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.4'
+  jarFile = './gradle-wrapper/gradle-wrapper.jar'
+  scriptFile = './gradle'
+}
