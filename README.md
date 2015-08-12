@@ -1,16 +1,19 @@
 # XLS Test
 Excel testing library
 
+Be sure that your code generates correct Excel!
+
 ## How to use
 
 ```java
-import static com.codeborne.xlstest.XLSMatchers.containsText;
+import com.codeborne.xlstest.XLS;
+import static com.codeborne.xlstest.XLS.*;
 import static org.junit.Assert.assertThat;
 
 public class ExcelContainsTextTest {
   @Test
   public void canAssertThatXlsContainsText() {
-    XLS spreadsheet = new XLS (getClass().getClassLoader().getResource("statement.xls"));
+    XLS spreadsheet = new XLS(getClass().getClassLoader().getResource("statement.xls"));
     assertThat(spreadsheet, containsText("Statement"));
   }
 }
@@ -24,14 +27,14 @@ If you use **Maven**, add the following dependency to pom.xml:
   <dependency>
     <groupId>com.codeborne</groupId>
     <artifactId>xls-test</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
   </dependency>
 ```
 
 If you use **Gradle**, add the following dependency to build.gradle:
 
 ```groovy
-  testCompile 'com.codeborne:xls-test:1.0'
+  testCompile 'com.codeborne:xls-test:1.1'
 ```
 
 ## How to contribute
