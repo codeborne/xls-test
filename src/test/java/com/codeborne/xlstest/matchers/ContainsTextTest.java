@@ -3,7 +3,7 @@ package com.codeborne.xlstest.matchers;
 import com.codeborne.xlstest.XLS;
 import org.junit.Test;
 
-import static com.codeborne.xlstest.XLSMatchers.containsText;
+import static com.codeborne.xlstest.XLS.containsText;
 import static org.junit.Assert.assertThat;
 
 public class ContainsTextTest {

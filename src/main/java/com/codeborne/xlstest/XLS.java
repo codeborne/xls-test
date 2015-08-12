@@ -1,13 +1,17 @@
 package com.codeborne.xlstest;
 
+import com.codeborne.xlstest.matchers.ContainsText;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.hamcrest.Matcher;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static com.codeborne.xlstest.IO.readBytes;
+import static com.codeborne.xlstest.IO.toURL;
 
 public class XLS {
   public final String name;
@@ -43,16 +47,7 @@ public class XLS {
   public XLS(URI uri) {
     this(toURL(uri));
   }
-
-  private static URL toURL(URI uri) {
-    try {
-      return uri.toURL();
-    }
-    catch (MalformedURLException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
-
+  
   public XLS(byte[] content) {
     this("", content);
   }
@@ -60,30 +55,8 @@ public class XLS {
   public XLS(InputStream inputStream) {
     this(readBytes(inputStream));
   }
-
-  private static byte[] readBytes(URL url) {
-    try (InputStream inputStream = url.openStream()) {
-      return readBytes(inputStream);
-    }
-    catch (IOException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
   
-  private static byte[] readBytes(InputStream inputStream) {
-    ByteArrayOutputStream result = new ByteArrayOutputStream();
-    try {
-      byte[] buffer = new byte[2048];
-
-      int nRead;
-      while ((nRead = inputStream.read(buffer, 0, buffer.length)) != -1) {
-        result.write(buffer, 0, nRead);
-      }
-    }
-    catch (IOException e) {
-      throw new IllegalArgumentException(e);
-    }
-
-    return result.toByteArray();
+  public static Matcher<XLS> containsText(String text) {
+    return new ContainsText(text);
   }
 }
