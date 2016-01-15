@@ -1,10 +1,14 @@
 package com.codeborne.xlstest;
 
 import com.codeborne.xlstest.matchers.ContainsText;
+import com.codeborne.xlstest.matchers.RowContainsText;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.hamcrest.Matcher;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
@@ -58,5 +62,9 @@ public class XLS {
   
   public static Matcher<XLS> containsText(String text) {
     return new ContainsText(text);
+  }
+
+  public static Matcher<XLS> rowContainsText(String... text) {
+    return new RowContainsText(text);
   }
 }
