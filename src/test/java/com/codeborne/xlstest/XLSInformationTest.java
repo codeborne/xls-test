@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class XLSInformationTest {
   @Test
-  public void canGetInformationFromPdf() throws Exception {
+  public void canGetInformationFromXls() throws Exception {
     XLS XLS = new XLS(getClass().getClassLoader().getResource("statement.xls"));
     assertThat(XLS.name, endsWith("statement.xls"));
     assertThat(XLS.excel.getNumberOfSheets(), equalTo(3));
