@@ -1,7 +1,7 @@
 package com.codeborne.xlstest;
 
+import com.codeborne.xlstest.matchers.ContainsRow;
 import com.codeborne.xlstest.matchers.ContainsText;
-import com.codeborne.xlstest.matchers.RowContainsText;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.hamcrest.Matcher;
 
@@ -64,7 +64,7 @@ public class XLS {
     return new ContainsText(text);
   }
 
-  public static Matcher<XLS> rowContainsText(String... text) {
-    return new RowContainsText(text);
+  public static Matcher<XLS> containsRow(String... cellTexts) {
+    return new ContainsRow(cellTexts);
   }
 }
