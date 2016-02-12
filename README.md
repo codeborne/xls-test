@@ -27,14 +27,14 @@ If you use **Maven**, add the following dependency to pom.xml:
   <dependency>
     <groupId>com.codeborne</groupId>
     <artifactId>xls-test</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
   </dependency>
 ```
 
 If you use **Gradle**, add the following dependency to build.gradle:
 
 ```groovy
-  testCompile 'com.codeborne:xls-test:1.1'
+  testCompile 'com.codeborne:xls-test:1.2'
 ```
 
 ## How to contribute

@@ -1,10 +1,10 @@
 == Changelog
 
-=== 1.2 (planned to 16.01.2016)
-* add method `assertThat(xls, rowContainsText("cell 1 text", "cell 2 text", "cell 3 text"));`
+=== 1.2 (released 12.02.2016)
+* add method `assertThat(xls, containsRow("cell 1 text", "cell 2 text", "cell 3 text"));`
 * change license to less restrictive MIT
 
-=== 1.1(released 12.08.2015)
+=== 1.1 (released 12.08.2015)
 * simplify API: all public methods are in class XLS
 
 === 1.0 (released 28.06.2015)
