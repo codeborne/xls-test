@@ -32,8 +32,8 @@ uploadArchives {
 
                licenses {
                    license {
-                       name 'LGPL 3.0'
-                       url 'http://www.gnu.org/licenses/lgpl.html'
+                       name 'MIT'
+                       url 'https://opensource.org/licenses/MIT'
                        distribution 'repo'
                    }
                }
@@ -42,6 +42,10 @@ uploadArchives {
                    developer {
                        id 'asolntsev'
                        name 'Andrei Solntsev'
+                   }
+                   developer {
+                       id 'MATPOCOB'
+                       name 'Kirill Klenski'
                    }
                }
            }
