@@ -11,7 +11,7 @@ buildscript {
 apply from: 'build.gradle'
 apply plugin: 'signing'
 
-defaultTasks 'clean', 'test', 'install', 'uploadArchives'
+defaultTasks 'clean', 'check', 'test', 'install', 'uploadArchives'
 
 signing {
   sign configurations.archives

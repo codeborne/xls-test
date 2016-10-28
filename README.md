@@ -2,11 +2,8 @@
 Excel testing library
 
 Be sure that your code generates correct Excel!
-
 [![Build Status](https://travis-ci.org/codeborne/xls-test.svg?branch=master)](https://travis-ci.org/codeborne/xls-test)
-
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test)
-
 [![Coverage Status](https://coveralls.io/repos/github/codeborne/xls-test/badge.svg?branch=master)](https://coveralls.io/github/codeborne/xls-test?branch=master)
 
 ## How to use
@@ -56,7 +53,7 @@ Any contribution is important!
 
 Many thanks to these incredible tools that help us creating open-source software:
 
-![Intellij IDEA](http://www.jetbrains.com/idea/docs/logo_intellij_idea.png)
+![Intellij IDEA](http://store.softline.ru/uploads/resizer/allsoft_2231598/2231598_Scale_120x120.png)
 
 ![YourKit Java profiler](http://selenide.org/images/yourkit.png)
 
