@@ -11,11 +11,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static com.codeborne.xlstest.IO.readBytes;
-import static com.codeborne.xlstest.IO.toURL;
+import static com.codeborne.xlstest.IO.readFile;
 
 public class XLS {
   public final String name;
@@ -35,28 +33,19 @@ public class XLS {
     this(xlsFile.getAbsolutePath(), readFile(xlsFile));
   }
 
-  private static byte[] readFile(File xlsFile) {
-    try {
-      return Files.readAllBytes(Paths.get(xlsFile.getAbsolutePath()));
-    }
-    catch (IOException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
-
-  public XLS(URL url) {
+  public XLS(URL url) throws IOException {
     this(url.toString(), readBytes(url));
   }
 
-  public XLS(URI uri) {
-    this(toURL(uri));
+  public XLS(URI uri) throws IOException {
+    this(uri.toURL());
   }
   
   public XLS(byte[] content) {
     this("", content);
   }
 
-  public XLS(InputStream inputStream) {
+  public XLS(InputStream inputStream) throws IOException {
     this(readBytes(inputStream));
   }
   
