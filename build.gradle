@@ -56,7 +56,6 @@ test {
   testLogging.showStandardStreams = true
   jacoco {
     enabled = true
-    includes = ['com/codeborne/xlstest/**/*']
   }
 }
 
