@@ -1,10 +1,11 @@
+[![Build Status](https://travis-ci.org/codeborne/xls-test.svg?branch=master)](https://travis-ci.org/codeborne/xls-test)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test)
+[![Coverage Status](https://coveralls.io/repos/github/codeborne/xls-test/badge.svg?branch=master)](https://coveralls.io/github/codeborne/xls-test?branch=master)
+
 # XLS Test
 Excel testing library
 
 Be sure that your code generates correct Excel!
-[![Build Status](https://travis-ci.org/codeborne/xls-test.svg?branch=master)](https://travis-ci.org/codeborne/xls-test)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test)
-[![Coverage Status](https://coveralls.io/repos/github/codeborne/xls-test/badge.svg?branch=master)](https://coveralls.io/github/codeborne/xls-test?branch=master)
 
 ## How to use
 
