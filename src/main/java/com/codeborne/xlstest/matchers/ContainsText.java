@@ -29,6 +29,6 @@ public class ContainsText extends XLSMatcher {
 
   @Override
   public void describeTo(Description description) {
-    description.appendText("a XLS containing ").appendValue(reduceSpaces(substring));
+    description.appendText("a XLS containing text ").appendValue(reduceSpaces(substring));
   }
 }

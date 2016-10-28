@@ -39,6 +39,6 @@ public class ContainsRow extends XLSMatcher {
 
   @Override
   public void describeTo(Description description) {
-    description.appendText("a XLS containing ").appendValue(Arrays.toString(cellTexts));
+    description.appendText("a XLS containing row ").appendValue(Arrays.toString(cellTexts));
   }
 }

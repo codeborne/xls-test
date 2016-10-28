@@ -3,12 +3,17 @@ package com.codeborne.xlstest.matchers;
 import com.codeborne.xlstest.XLS;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+
 import static com.codeborne.xlstest.XLS.containsText;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class ContainsTextTest {
   @Test
-  public void canAssertThatXlsContainsText() {
+  public void canAssertThatXlsContainsText() throws IOException {
     XLS XLS = new XLS(getClass().getClassLoader().getResource("statement.xls"));
     assertThat(XLS, containsText("Выписка"));
     assertThat(XLS, containsText("Solntsev Andrei"));
@@ -43,5 +48,20 @@ public class ContainsTextTest {
     assertThat(XLS, containsText("Списание"));
     assertThat(XLS, containsText("Зарезервировано"));
     assertThat(XLS, containsText("349,928.00"));
+  }
+
+  @Test
+  public void errorDescription() {
+    XLS xls = new XLS(new File("src/test/resources/small.xls"));
+    try {
+      assertThat(xls, containsText("wrong text"));
+      fail("expected AssertionError");
+    }
+    catch (AssertionError expected) {
+      assertThat(expected.getMessage(), is(
+          "\nExpected: a XLS containing text \"wrong text\"" +
+              "\n     but: was \"" + System.getProperty("user.dir") + "/src/test/resources/small.xls\"" +
+              "\nВыписка\t\t\nСчёт\t40820810590480000591\t\n"));
+    }
   }
 }
