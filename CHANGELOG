@@ -1,7 +1,8 @@
 == Changelog
 
 === 1.3
-* now all constructors with File, URL or InputStream parameter do throw IOException (instead of wrpping it into IllegalArgumentException)
+* upgrade to POI 3.17
+* now all constructors with File, URL or InputStream parameter do throw IOException (instead of wrapping it into IllegalArgumentException)
 
 === 1.2 (released 12.02.2016)
 * add method `assertThat(xls, containsRow("cell 1 text", "cell 2 text", "cell 3 text"));`
