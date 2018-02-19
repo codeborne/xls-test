@@ -89,12 +89,6 @@ artifacts {
   archives javadocJar
 }
 
-task wrapper(type: Wrapper) {
-  gradleVersion = '3.1'
-  jarFile = './gradle-wrapper/gradle-wrapper.jar'
-  scriptFile = './gradle'
-}
-
 jacocoTestReport {
   reports {
     xml.enabled true
