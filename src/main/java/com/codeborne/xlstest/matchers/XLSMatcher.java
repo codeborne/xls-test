@@ -1,9 +1,9 @@
 package com.codeborne.xlstest.matchers;
 
 import com.codeborne.xlstest.XLS;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.hamcrest.Description;
 import org.hamcrest.SelfDescribing;
 import org.hamcrest.TypeSafeMatcher;
@@ -36,7 +36,7 @@ abstract class XLSMatcher extends TypeSafeMatcher<XLS> implements SelfDescribing
     mismatchDescription.appendText("was \"").appendText(item.name).appendText("\"\n");
 
     for (int i = 0; i < item.excel.getNumberOfSheets(); i++) {
-      HSSFSheet sheet = item.excel.getSheetAt(i);
+      Sheet sheet = item.excel.getSheetAt(i);
       for (Row row : sheet) {
         for (Cell cell : row) {
           mismatchDescription.appendText(getFormattedCellValue(cell)).appendText("\t");

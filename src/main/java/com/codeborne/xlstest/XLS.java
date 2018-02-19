@@ -2,7 +2,8 @@ package com.codeborne.xlstest;
 
 import com.codeborne.xlstest.matchers.ContainsRow;
 import com.codeborne.xlstest.matchers.ContainsText;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.hamcrest.Matcher;
 
 import java.io.ByteArrayInputStream;
@@ -17,12 +18,12 @@ import static com.codeborne.xlstest.IO.readFile;
 
 public class XLS {
   public final String name;
-  public final HSSFWorkbook excel;
+  public final Workbook excel;
 
   private XLS(String name, byte[] content) {
     this.name = name;
     try (InputStream inputStream = new ByteArrayInputStream(content)) {
-      excel = new HSSFWorkbook(inputStream);
+      excel = WorkbookFactory.create(inputStream);
     }
     catch (Exception e) {
       throw new IllegalArgumentException("Invalid XLS " + name, e);
