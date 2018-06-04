@@ -15,14 +15,14 @@ apply plugin: 'com.github.kt3k.coveralls'
 
 group='com.codeborne'
 archivesBaseName = 'xls-test'
-version='1.3-SNAPSHOT'
+version='1.4-SNAPSHOT'
 
 [compileJava, compileTestJava]*.options.collect {options -> options.encoding = 'UTF-8'}
 [compileJava, compileTestJava]*.options.collect {options -> options.debug = true}
 compileJava.options.debugOptions.debugLevel = "source,lines,vars"
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 defaultTasks 'test', 'install'
 
@@ -30,9 +30,9 @@ dependencies {
   compile group: 'net.sf.jxls', name: 'jxls-core', version: '1.0.6', transitive: true
   compile group: 'net.sf.jxls', name: 'jxls-reader', version: '1.0.6', transitive: true
   compile group: 'org.apache.commons', name: 'commons-jexl', version: '2.1.1', transitive: true
-  compile group: 'org.apache.poi', name: 'poi', version: '3.13', transitive: true
-  compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.13', transitive: true
-  compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.13', transitive: true
+  compile group: 'org.apache.poi', name: 'poi', version: '3.17', transitive: true
+  compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17', transitive: true
+  compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.17', transitive: true
 
   compile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3', transitive: false
   testCompile group: 'junit', name: 'junit', version: '4.12', transitive: false
@@ -87,12 +87,6 @@ artifacts {
   archives jar
   archives sourcesJar
   archives javadocJar
-}
-
-task wrapper(type: Wrapper) {
-  gradleVersion = '4.7'
-  jarFile = './gradle-wrapper/gradle-wrapper.jar'
-  scriptFile = './gradle'
 }
 
 jacocoTestReport {
