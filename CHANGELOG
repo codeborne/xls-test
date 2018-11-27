@@ -1,5 +1,8 @@
 == Changelog
 
+=== 1.4.1
+* upgrade to POI 4.0.0
+
 === 1.4.0
 * upgrade to Java 8
 

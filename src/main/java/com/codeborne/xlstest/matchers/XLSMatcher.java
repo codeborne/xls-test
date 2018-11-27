@@ -12,20 +12,16 @@ import java.text.DecimalFormat;
 
 abstract class XLSMatcher extends TypeSafeMatcher<XLS> implements SelfDescribing {
 
-  private static final int TYPE_NUMBER = 0;
-  private static final int TYPE_TEXT = 1;
-  private static final int TYPE_EMPTY = 3;
-
   protected String reduceSpaces(String text) {
     return text.replaceAll("[\\s\\n\\r\u00a0]+", " ").trim();
   }
 
   protected String getFormattedCellValue(Cell cell) {
     switch (cell.getCellType()) {
-      case TYPE_NUMBER:
+      case NUMERIC:
         return new DecimalFormat(cell.getCellStyle().getDataFormatString()).format(cell.getNumericCellValue());
-      case TYPE_TEXT:
-      case TYPE_EMPTY:
+      case STRING:
+      case BLANK:
       default:
         return cell.toString();
     }
