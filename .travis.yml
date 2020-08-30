@@ -11,6 +11,7 @@ script: "./gradlew clean check test"
 
 jdk:
   - openjdk8
+  - openjdk11
 
 after_success:
 - ./gradle jacocoTestReport coveralls
