@@ -15,11 +15,21 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/build/lib" />
+          <root url="file://$MODULE_DIR$/build/lib/prod" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/build/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/build/lib/prod" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/build/lib/test" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/build/lib/test" recursive="false" />
       </library>
     </orderEntry>
   </component>
