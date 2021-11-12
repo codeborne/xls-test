@@ -1,6 +1,7 @@
 package com.codeborne.xlstest.matchers;
 
 import com.codeborne.xlstest.XLS;
+import org.apache.poi.ss.usermodel.BuiltinFormats;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -9,8 +10,18 @@ import org.hamcrest.SelfDescribing;
 import org.hamcrest.TypeSafeMatcher;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.List;
 
 abstract class XLSMatcher extends TypeSafeMatcher<XLS> implements SelfDescribing {
+  private List<String> legalNumericFormats = Arrays.asList(
+    BuiltinFormats.getBuiltinFormat(1),
+    BuiltinFormats.getBuiltinFormat(2),
+    BuiltinFormats.getBuiltinFormat(3),
+    BuiltinFormats.getBuiltinFormat(4),
+    BuiltinFormats.getBuiltinFormat(9),
+    BuiltinFormats.getBuiltinFormat(10)
+  );
 
   protected String reduceSpaces(String text) {
     return text.replaceAll("[\\s\\n\\r\u00a0]+", " ").trim();
@@ -19,7 +30,13 @@ abstract class XLSMatcher extends TypeSafeMatcher<XLS> implements SelfDescribing
   protected String getFormattedCellValue(Cell cell) {
     switch (cell.getCellType()) {
       case NUMERIC:
-        return new DecimalFormat(cell.getCellStyle().getDataFormatString()).format(cell.getNumericCellValue());
+        DecimalFormat formatter;
+        if (legalNumericFormats.contains(cell.getCellStyle().getDataFormatString())) {
+          formatter = new DecimalFormat(cell.getCellStyle().getDataFormatString());
+        } else {
+          formatter = new DecimalFormat();
+        }
+        return formatter.format(cell.getNumericCellValue());
       case STRING:
       case BLANK:
       default:
