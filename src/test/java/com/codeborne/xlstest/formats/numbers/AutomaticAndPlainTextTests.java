@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.io.File;
 
 import static com.codeborne.xlstest.XLS.containsText;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AutomaticAndPlainTextTests {
   @Test

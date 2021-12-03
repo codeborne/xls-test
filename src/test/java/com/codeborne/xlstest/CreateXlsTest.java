@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static com.codeborne.xlstest.XLS.containsText;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CreateXlsTest {
   @Test
@@ -18,7 +18,7 @@ public class CreateXlsTest {
     File file = new File(getClass().getClassLoader().getResource("statement.xls").toURI());
     assertThat(new XLS(file), containsText("Выписка"));
   }
-  
+
   @Test
   public void fromUrl() throws Exception {
     URL url = getClass().getClassLoader().getResource("statement.xls");

@@ -9,7 +9,7 @@ import java.io.IOException;
 import static com.codeborne.xlstest.XLS.containsRow;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 
 public class ContainsRowTest {
@@ -46,7 +46,7 @@ public class ContainsRowTest {
     }
     catch (AssertionError expected) {
       assertThat(expected.getMessage(), is(
-          "\nExpected: a XLS containing row \"[wrong data]\"" + 
+          "\nExpected: a XLS containing row \"[wrong data]\"" +
               "\n     but: was \"" + System.getProperty("user.dir") + "/src/test/resources/small.xls\"" +
               "\nВыписка\t\t\nСчёт\t40820810590480000591\t\n"));
     }

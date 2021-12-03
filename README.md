@@ -12,7 +12,7 @@ Be sure that your code generates correct Excel!
 ```java
 import com.codeborne.xlstest.XLS;
 import static com.codeborne.xlstest.XLS.*;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ExcelContainsTextTest {
   @Test
@@ -45,7 +45,7 @@ If you use **Gradle**, add the following dependency to build.gradle:
 
 You are welcome to suggest your features and fixes!
 
-Just fork the [xls-test](https://github.com/codeborne/xls-test) and create pull request. 
+Just fork the [xls-test](https://github.com/codeborne/xls-test) and create pull request.
 Any contribution is important!
 
 **Become part of open-source community!**

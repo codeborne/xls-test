@@ -3,7 +3,7 @@ package com.codeborne.xlstest;
 import org.junit.Test;
 
 import static com.codeborne.xlstest.XLS.containsText;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RealWorldExamplesTest {
   @Test
