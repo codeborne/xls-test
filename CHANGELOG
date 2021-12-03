@@ -1,5 +1,8 @@
 == Changelog
 
+=== 1.5.1
+* upgrade POI 4.1.2 -> 5.1.0
+
 === 1.5.0 (released 03.12.2021)
 * #2 fix assertions for floating point numbers  --  thanks to Dmitry Romashov for PR #3
 
