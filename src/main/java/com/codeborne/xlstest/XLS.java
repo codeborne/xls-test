@@ -59,7 +59,7 @@ public class XLS {
     return new ContainsRow(cellTexts);
   }
 
-  public static Matcher<XLS> doesNotContainsText(String text) {
+  public static Matcher<XLS> doesNotContainText(String text) {
     return new DoesNotContainText(text);
   }
 }

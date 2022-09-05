@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static com.codeborne.xlstest.XLS.containsText;
-import static com.codeborne.xlstest.XLS.doesNotContainsText;
+import static com.codeborne.xlstest.XLS.doesNotContainText;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.fail;
@@ -55,14 +55,14 @@ public class ContainsTextTest {
   @Test
   public void canAssertXlsDoesNotContainText() throws IOException {
     XLS xls = new XLS(Objects.requireNonNull(getClass().getClassLoader().getResource("statement.xls")));
-    assertThat(xls, doesNotContainsText("null"));
+    assertThat(xls, doesNotContainText("null"));
   }
 
   @Test
   public void errorDescriptionForDoesNotContainTextMatcher() {
     XLS xls = new XLS(new File("src/test/resources/small.xls"));
     try {
-      assertThat(xls, doesNotContainsText("Выписка"));
+      assertThat(xls, doesNotContainText("Выписка"));
       fail("expected AssertionError");
     }
     catch (AssertionError expected) {
