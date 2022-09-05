@@ -5,16 +5,18 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.codeborne.xlstest.XLS.containsText;
-import static org.hamcrest.Matchers.is;
+import static com.codeborne.xlstest.XLS.doesNotContainText;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.fail;
 
 public class ContainsTextTest {
   @Test
   public void canAssertThatXlsContainsText() throws IOException {
-    XLS XLS = new XLS(getClass().getClassLoader().getResource("statement.xls"));
+    XLS XLS = new XLS(Objects.requireNonNull(getClass().getClassLoader().getResource("statement.xls")));
     assertThat(XLS, containsText("Выписка"));
     assertThat(XLS, containsText("Solntsev Andrei"));
     assertThat(XLS, containsText("25.06.2015 23:09:32"));
@@ -51,7 +53,28 @@ public class ContainsTextTest {
   }
 
   @Test
-  public void errorDescription() {
+  public void canAssertXlsDoesNotContainText() throws IOException {
+    XLS xls = new XLS(Objects.requireNonNull(getClass().getClassLoader().getResource("statement.xls")));
+    assertThat(xls, doesNotContainText("null"));
+  }
+
+  @Test
+  public void errorDescriptionForDoesNotContainTextMatcher() {
+    XLS xls = new XLS(new File("src/test/resources/small.xls"));
+    try {
+      assertThat(xls, doesNotContainText("Выписка"));
+      fail("expected AssertionError");
+    }
+    catch (AssertionError expected) {
+      assertThat(expected.getMessage(), is(
+        "\nExpected: a XLS not containing text \"Выписка\"" +
+          "\n     but: was \"" + System.getProperty("user.dir") + "/src/test/resources/small.xls\"" +
+          "\nВыписка\t\t\nСчёт\t40820810590480000591\t\n"));
+    }
+  }
+
+  @Test
+  public void errorDescriptionForContainsTextMatcher() {
     XLS xls = new XLS(new File("src/test/resources/small.xls"));
     try {
       assertThat(xls, containsText("wrong text"));
