@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.codeborne.xlstest.XLS.containsText;
 import static com.codeborne.xlstest.XLS.doesNotContainsText;
@@ -15,7 +16,7 @@ import static org.junit.Assert.fail;
 public class ContainsTextTest {
   @Test
   public void canAssertThatXlsContainsText() throws IOException {
-    XLS XLS = new XLS(getClass().getClassLoader().getResource("statement.xls"));
+    XLS XLS = new XLS(Objects.requireNonNull(getClass().getClassLoader().getResource("statement.xls")));
     assertThat(XLS, containsText("Выписка"));
     assertThat(XLS, containsText("Solntsev Andrei"));
     assertThat(XLS, containsText("25.06.2015 23:09:32"));
@@ -53,7 +54,7 @@ public class ContainsTextTest {
 
   @Test
   public void canAssertXlsDoesNotContainText() throws IOException {
-    XLS xls = new XLS(getClass().getClassLoader().getResource("statement.xls"));
+    XLS xls = new XLS(Objects.requireNonNull(getClass().getClassLoader().getResource("statement.xls")));
     assertThat(xls, doesNotContainsText("null"));
   }
 
