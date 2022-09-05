@@ -1,8 +1,9 @@
 == Changelog
 
-=== 1.6.0
-* upgrade POI 4.1.2 -> 5.2.2
+=== 1.6.0 (released 05.09.2022)
 * #4 add matcher doesNotContainText - thanks to Vitali Plagov for PR #4
+* upgrade POI 4.1.2 -> 5.2.2
+* upgrade from hamcrest-core:1.3 to hamcrest 2.2
 
 === 1.5.0 (released 03.12.2021)
 * #2 fix assertions for floating point numbers  --  thanks to Dmitry Romashov for PR #3
