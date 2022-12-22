@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/codeborne/xls-test.svg?branch=master)](https://travis-ci.org/codeborne/xls-test)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test)
-[![Coverage Status](https://coveralls.io/repos/github/codeborne/xls-test/badge.svg?branch=master)](https://coveralls.io/github/codeborne/xls-test?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/codeborne/xls-test/badge.svg?branch=main)](https://coveralls.io/github/codeborne/xls-test?branch=main)
 
 # XLS Test
 Excel testing library
@@ -31,14 +30,14 @@ If you use **Maven**, add the following dependency to pom.xml:
   <dependency>
     <groupId>com.codeborne</groupId>
     <artifactId>xls-test</artifactId>
-    <version>1.6.0</version>
+    <version>1.7.0</version>
   </dependency>
 ```
 
 If you use **Gradle**, add the following dependency to build.gradle:
 
 ```groovy
-  testCompile 'com.codeborne:xls-test:1.6.0'
+  testCompile 'com.codeborne:xls-test:1.7.0'
 ```
 
 ## How to contribute
