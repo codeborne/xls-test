@@ -1,44 +1,51 @@
+apply plugin: 'maven-publish'
+
 jar {
   manifest {
     attributes(
       "Implementation-Title": project.group + '.' + project.name,
       "Implementation-Version": version,
-      "Implementation-Vendor": "Codeborne")
+      "Implementation-Vendor": "Codeborne"
+    )
   }
 }
 
-task sourcesJar(type: Jar) {
-  classifier = 'sources'
-  from sourceSets.main.allJava
+tasks.register('sourcesJar', Jar) {
+  dependsOn classes
+  archiveClassifier = 'sources'
+  from sourceSets.main.allSource
 }
 
-javadoc {
-  options.encoding = 'UTF-8'
+tasks.withType(Javadoc).configureEach {
   failOnError = false
+  options.encoding = 'UTF-8'
+  source = sourceSets.main.allJava
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-  classifier = 'javadoc'
+tasks.register('javadocJar', Jar) {
+  dependsOn javadoc
+  archiveClassifier = 'javadoc'
   from javadoc.destinationDir
 }
 
 if (project.hasProperty("signing.keyId")) {
   apply plugin: 'signing'
-  apply plugin: 'maven-publish'
 
   signing {
     afterEvaluate {
       sign publishing.publications.mavenJava
     }
   }
+}
 
-  artifacts {
-    archives jar
-    archives sourcesJar
-    archives javadocJar
-  }
+artifacts {
+  archives jar
+  archives sourcesJar
+  archives javadocJar
+}
 
-  publishing {
+publishing {
+  if (project.hasProperty("sonatypeUsername")) {
     repositories {
       maven {
         name 'Maven'
@@ -51,36 +58,37 @@ if (project.hasProperty("signing.keyId")) {
         }
       }
     }
-    publications {
-      mavenJava(MavenPublication) {
-        groupId "${project.group}"
-        artifactId "${project.name}"
+  }
 
-        from components.java
-        artifact(sourcesJar)
-        artifact(javadocJar)
+  publications {
+    mavenJava(MavenPublication) {
+      groupId "${project.group}"
+      artifactId "${project.name}"
 
-        pom {
-          name = archivesBaseName
-          description = 'XLS Test: Excel testing library'
+      from components.java
+      artifact(sourcesJar)
+      artifact(javadocJar)
+
+      pom {
+        name = archivesBaseName
+        description = 'XLS Test: Excel testing library, created by Codeborne.'
+        url = 'https://github.com/codeborne/xls-test'
+        licenses {
+          license {
+            name = 'MIT'
+            url = 'https://opensource.org/licenses/MIT'
+          }
+        }
+        developers {
+          developer {
+            id = 'asolntsev'
+            name = 'Andrei Solntsev'
+          }
+        }
+        scm {
+          connection = 'scm:git@github.com:codeborne/xls-test.git'
+          developerConnection = 'scm:git@github.com:codeborne/xls-test.git'
           url = 'https://github.com/codeborne/xls-test'
-          licenses {
-            license {
-              name = 'MIT'
-              url = 'https://opensource.org/licenses/MIT'
-            }
-          }
-          developers {
-            developer {
-              id = 'asolntsev'
-              name = 'Andrei Solntsev'
-            }
-          }
-          scm {
-            connection = 'scm:git@github.com:codeborne/xls-test.git'
-            developerConnection = 'scm:git@github.com:codeborne/xls-test.git'
-            url = 'https://github.com/codeborne/xls-test'
-          }
         }
       }
     }
