@@ -9,18 +9,6 @@ dependencies {
   testImplementation group: 'junit', name: 'junit', version: '4.13.2', transitive: false
 }
 
-repositories{
+repositories {
   mavenCentral()
 }
-
-task libsProd(type: Sync) {
-  from configurations.compileClasspath
-  into "$buildDir/lib/prod"
-}
-
-task libsTest(type: Sync) {
-  from configurations.testRuntimeClasspath - configurations.compileClasspath
-  into "$buildDir/lib/test"
-}
-
-compileJava.dependsOn libsProd, libsTest
