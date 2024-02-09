@@ -1,6 +1,7 @@
 == Changelog
 
 === 1.7.1 (released 09.02.2024)
+* bump POI from 5.2.3 to 5.2.5
 * upgrade Gradle from 7.x 8.5
 
 === 1.7.0 (released 22.12.2022)
