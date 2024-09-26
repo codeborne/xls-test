@@ -1,7 +1,8 @@
 == Changelog
 
-=== 1.7.2 (under construction)
-* ...
+=== 1.7.2 (released 26.09.2024)
+* bump POI from 5.2.5 to 5.3.0
+* bump Hamcrest from 2.2 to 3.0
 
 === 1.7.1 (released 09.02.2024)
 * bump POI from 5.2.3 to 5.2.5
