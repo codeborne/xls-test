@@ -1,95 +1,53 @@
-apply plugin: 'maven-publish'
-
 jar {
   manifest {
     attributes(
+      "Automatic-Module-Name": project.group + '.' + project.name.replace('-', '.'),
       "Implementation-Title": project.group + '.' + project.name,
-      "Implementation-Version": version,
-      "Implementation-Vendor": "Codeborne"
-    )
+      "Implementation-Version": archiveVersion,
+      "Implementation-Vendor": "Codeborne")
   }
 }
 
-tasks.register('sourcesJar', Jar) {
-  dependsOn classes
+task sourcesJar(type: Jar) {
   archiveClassifier = 'sources'
-  from sourceSets.main.allSource
+  from sourceSets.main.allJava
 }
 
-tasks.withType(Javadoc).configureEach {
-  failOnError = false
+javadoc {
   options.encoding = 'UTF-8'
-  source = sourceSets.main.allJava
+  failOnError = false
 }
 
-tasks.register('javadocJar', Jar) {
-  dependsOn javadoc
+task javadocJar(type: Jar, dependsOn: javadoc) {
   archiveClassifier = 'javadoc'
   from javadoc.destinationDir
 }
 
 if (project.hasProperty("signing.keyId")) {
-  apply plugin: 'signing'
-
-  signing {
-    afterEvaluate {
-      sign publishing.publications.mavenJava
-    }
-  }
-}
-
-artifacts {
-  archives jar
-  archives sourcesJar
-  archives javadocJar
-}
-
-publishing {
-  if (project.hasProperty("sonatypeUsername")) {
-    repositories {
-      maven {
-        name 'Maven'
-        url project.version.endsWith("-SNAPSHOT") ?
-          'https://oss.sonatype.org/content/repositories/snapshots/' :
-          'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-        credentials {
-          username "$sonatypeUsername"
-          password "$sonatypePassword"
+  mavenPublishing {
+    pom {
+      name = "xls-test"
+      description = "XLS Test: Excel testing library"
+      inceptionYear = "2015"
+      url = "https://github.com/codeborne/xls-test"
+      licenses {
+        license {
+          name = "MIT"
+          url = "https://opensource.org/licenses/MIT"
+          distribution = "https://opensource.org/licenses/MIT"
         }
       }
-    }
-  }
-
-  publications {
-    mavenJava(MavenPublication) {
-      groupId "${project.group}"
-      artifactId "${project.name}"
-
-      from components.java
-      artifact(sourcesJar)
-      artifact(javadocJar)
-
-      pom {
-        name = archivesBaseName
-        description = 'XLS Test: Excel testing library, created by Codeborne.'
-        url = 'https://github.com/codeborne/xls-test'
-        licenses {
-          license {
-            name = 'MIT'
-            url = 'https://opensource.org/licenses/MIT'
-          }
+      developers {
+        developer {
+          id = 'asolntsev'
+          name = 'Andrei Solntsev'
+          url = "https://github.com/asolntsev/"
         }
-        developers {
-          developer {
-            id = 'asolntsev'
-            name = 'Andrei Solntsev'
-          }
-        }
-        scm {
-          connection = 'scm:git@github.com:codeborne/xls-test.git'
-          developerConnection = 'scm:git@github.com:codeborne/xls-test.git'
-          url = 'https://github.com/codeborne/xls-test'
-        }
+      }
+      scm {
+        url = "https://github.com/codeborne/xls-test"
+        connection = "scm:git:git://github.com/codeborne/xls-test.git"
+        developerConnection = "scm:git:ssh://git@github.com/codeborne/xls-test.git"
       }
     }
   }
