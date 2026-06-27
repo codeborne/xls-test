@@ -13,7 +13,7 @@ plugins {
 }
 
 group='com.codeborne'
-version='1.8.0-SNAPSHOT'
+version='1.8.0'
 
 defaultTasks 'test', 'publishToMavenLocal'
 
