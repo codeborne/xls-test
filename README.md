@@ -1,5 +1,7 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codeborne/xls-test)
-[![Coverage Status](https://coveralls.io/repos/github/codeborne/xls-test/badge.svg?branch=main)](https://coveralls.io/github/codeborne/xls-test?branch=main)
+![Build Status](https://github.com/java-testkit/xls-test/actions/workflows/test.yml/badge.svg)
+[![Maven Central](https://img.shields.io/maven-central/v/com.codeborne/xls-test.svg)](https://central.sonatype.com/search?q=xls-test&namespace=com.codeborne)
+[![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/selenide/selenide/blob/main/LICENSE)
+![Free](https://img.shields.io/badge/free-open--source-green.svg)
 
 # XLS Test
 Excel testing library
@@ -44,7 +46,7 @@ If you use **Gradle**, add the following dependency to build.gradle:
 
 You are welcome to suggest your features and fixes!
 
-Just fork the [xls-test](https://github.com/codeborne/xls-test) and create pull request.
+Just fork the [xls-test](https://github.com/java-testkit/xls-test) and create pull request.
 Any contribution is important!
 
 **Become part of open-source community!**

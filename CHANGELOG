@@ -1,7 +1,7 @@
 == Changelog
 
 === 1.8.1 (under construction)
-* TBD
+* Move GitHub repository to https://github.com/java-testkit/xls-test
 
 === 1.8.0 (released 27.06.2026)
 * update POI dependency from 5.3.0 to 5.5.1
